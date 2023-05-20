@@ -18,7 +18,6 @@ void encryptFile(char *password, char *fileName) {
     }
     // Seed the random number generator
     srand(*hash(password));
-    fclose(file);
     // Create an output file with ".encrypted" extension
     char outputFileName[256]; 
     snprintf(outputFileName, sizeof(outputFileName), "%s.encrypted", fileName); 
@@ -41,10 +40,11 @@ void encryptFile(char *password, char *fileName) {
         fputc(byte, outputFile);
     }
 
-    printf("File encrypted successfully. Output file: %s\n", fileName);
+    printf("File encrypted successfully. REMEMBER YOUR PASSWORD\n");
     fclose(file);
     fclose(outputFile);
     remove(fileName);
+    rename(outputFileName, fileName);
 }
 
 /*int main() {
