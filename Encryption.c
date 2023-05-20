@@ -3,7 +3,7 @@
 #include <string.h>
 
 void encryptFile(const cahr password, const char fileName) {
-    FILEfile = fopen(fileName, "rb");
+    FILE file = fopen(fileName, "rb");
     if (file == NULL) {
         printf("Unable to open file: %s\n", fileName);
         return;
