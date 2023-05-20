@@ -11,32 +11,29 @@ void Decrypt(char *name, char *pass) {
 
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char *argv[]) {
     if(argc != 4) {
         printf("Incorrect number of arguments\n\nCorrect Usage:\nEncryption: ./Encrypter encrypt [Filename] [Password]\nDecryption: ./Encrypter decrypt [Filename] [Password]\n");
     }
-    if(strcmp(argv[1], "encrypt")) {
+    char resulter[20];
+    if(!strcmp(argv[1], "encrypt")) {
         char *filename = argv[2];
         char *password = argv[3];
-        char resulter[20];
         printf("Verify the following is correct:\n\nFile Name: %s\nPassword: %s\n\nconfirm y/n\n", filename, password);
-        scanf("%19s", resulter);
-        printf("got '%s", resulter);
+        scanf("%9s", resulter);
         fflush(stdout);
-        if(strcmp(resulter, "y")) {
+        if(!strcmp(resulter, "y")) {
             Encrypt(filename, password);
         } else {
             printf("\nEncryption Terminated\n");
         }
-    } else if(strcmp(argv[1], "decrypt")) {
-        char *filename = argv[2];
+    } else if(!strcmp(argv[1], "decrypt")) {
+         char *filename = argv[2];
         char *password = argv[3];
-        char result;
         printf("Verify the following is correct:\n\nFile Name: %s\nPassword: %s\n\nconfirm y/n\n", filename, password);
-        scanf("c", result);
-        printf("got '%c'", result);
+        scanf("%9s", resulter);
         fflush(stdout);
-        if(result == 'y') {
+        if(!strcmp(resulter, "y")) {
             Decrypt(filename, password);
         } else {
             printf("\nEncryption Terminated\n");
