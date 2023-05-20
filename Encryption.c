@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+int *hash(char *key) {
+    if(strlen(key) < 33) {
+        return (int *)(key);
+    } else {
+        return 0;
+    }
+}
+
 void encryptFile(const char password, const char fileName) {
     FILE *file = fopen(fileName, "rb");
     if (file == NULL) {
